@@ -18,7 +18,6 @@
 	letter-spacing: 2px;
 }
 
-/* Дисплей */
 .display {
 	background: #0f172a;
 	padding: 25px 20px;
@@ -38,16 +37,21 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+	transition: all 0.3s ease;
 }
 
-/* Сетка кнопок */
+.displayResult {
+	color: #f97316 !important;
+	text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+	font-size: 3.2rem;
+}
+
 .buttonsGrid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 15px;
 }
 
-/* Базовый стиль кнопок */
 .btn {
 	border: none;
 	padding: 20px;
@@ -68,7 +72,6 @@
 	transform: translateY(2px);
 }
 
-/* Цифры */
 .btnDigit {
 	background: #334155;
 	color: #f1f5f9;
@@ -79,7 +82,6 @@
 	background: #475569;
 }
 
-/* Кнопки операций + и - */
 .btnOperation {
 	background: #f59e0b;
 	color: white;
@@ -91,7 +93,6 @@
 	background: #fbbf24;
 }
 
-/* Кнопка "=" */
 .btnEquals {
 	background: #10b981;
 	color: white;
@@ -103,7 +104,6 @@
 	background: #34d399;
 }
 
-/* Кнопка "C" */
 .btnClear {
 	background: #ef4444;
 	color: white;
@@ -116,12 +116,10 @@
 	background: #f87171;
 }
 
-/* Кнопка 0 занимает 2 колонки */
 .btnZero {
 	grid-column: span 2;
 }
 
-/* Блок отладки (показывает текущие состояния) */
 .debug {
 	margin-top: 30px;
 	padding: 15px;
@@ -142,7 +140,6 @@
 	border-radius: 10px;
 }
 
-/* Адаптивность */
 @media (max-width: 500px) {
 	.calculator {
 		margin: 20px;

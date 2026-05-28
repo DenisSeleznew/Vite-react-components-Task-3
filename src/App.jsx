@@ -6,12 +6,22 @@ function App() {
   const [operator, setOperator] = useState("");
   const [operand2, setOperand2] = useState("");
 
+  const [isResult, setIsResult] = useState(false);
+
   const NUMS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   const displayValue = `${operand1}${operator}${operand2}` || "0";
 
   // Обработчик нажатия на цифры
   const handleDigitClick = (digit) => {
+    if (isResult) {
+      setOperand1(digit);
+      setOperator("");
+      setOperand2("");
+      setIsResult(false);
+      return;
+    }
+
     if (operator === "") {
       setOperand1((prev) => prev + digit);
     } else {
@@ -24,10 +34,15 @@ function App() {
     setOperand1("");
     setOperator("");
     setOperand2("");
+    setIsResult(false);
   };
 
   // Обработчик нажатия на кнопку "+"
   const handlePlus = () => {
+    if (isResult) {
+      setIsResult(false);
+    }
+
     if (operand1 === "") return;
 
     if (operator !== "" && operand2 !== "") {
@@ -42,6 +57,10 @@ function App() {
 
   // Обработчик нажатия на кнопку "-"
   const handleMinus = () => {
+    if (isResult) {
+      setIsResult(false);
+    }
+
     if (operand1 === "") return;
 
     if (operator !== "" && operand2 !== "") {
@@ -72,13 +91,18 @@ function App() {
       setOperand1(String(result));
       setOperator("");
       setOperand2("");
+      setIsResult(true);
     }
   };
 
   return (
     <div className={styles.calculator}>
       <h1 className={styles.title}>Калькулятор</h1>
-      <div className={styles.display}>{displayValue}</div>
+      <div
+        className={`${styles.display} ${isResult ? styles.displayResult : ""}`}
+      >
+        {displayValue}
+      </div>
       <div className={styles.buttonsGrid}>
         <button
           className={`${styles.btn} ${styles.btnClear}`}
